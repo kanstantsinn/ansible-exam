@@ -1,0 +1,32 @@
+---
+# vars file for tomcat
+t_v: 8
+tomcat_link_list: 
+  9:
+    http://ftp.byfly.by/pub/apache.org/tomcat/tomcat-9/v9.0.2/bin/apache-tomcat-9.0.2.tar.gz
+  8:
+    http://ftp.byfly.by/pub/apache.org/tomcat/tomcat-8/v8.5.24/bin/apache-tomcat-8.5.24.tar.gz
+  7:
+    http://ftp.byfly.by/pub/apache.org/tomcat/tomcat-7/v7.0.82/bin/apache-tomcat-7.0.82.tar.gz
+  6:
+    http://archive.apache.org/dist/tomcat/tomcat-6/v6.0.53/bin/apache-tomcat-6.0.53.tar.gz
+  5:
+    http://archive.apache.org/dist/tomcat/tomcat-5/v5.5.36/bin/apache-tomcat-5.5.36.tar.gz
+
+tomcat_version_list:
+  9:
+    9.0.2
+  8:
+    8.5.24
+  7:
+    7.0.82
+  6:
+    6.0.53
+  5:
+    5.5.36
+
+tomcat_home: /opt/tomcat/{{tomcat_version_list[t_v]}} 
+tomcat_version: "{{tomcat_version_list[t_v]}}"
+tomcat_user: "tomcat_as"
+tomcat_group: "tomcat_as_group"
+tomcat_link: "{{tomcat_link_list[t_v]}}"

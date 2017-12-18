@@ -1,0 +1,23 @@
+[Unit]
+Description=Apache Tomcat {{tomcat_version}}  Web Application Container
+Wants=syslog.target network.target
+After=syslog.target network.target
+
+[Service]
+Type=forking
+
+Environment=CATALINA_HOME={{tomcat_home}}
+Environment='CATALINA_OPTS=-Xms1G -Xmx1G -Djava.net.preferIPv4Stack=true'
+
+ExecStart={{tomcat_home}}/bin/startup.sh
+ExecStop={{tomcat_home}}/bin/shutdown.sh
+SuccessExitStatus=143
+
+User={{tomcat_user}}
+Group={{tomcat_group}}
+UMask=0007
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

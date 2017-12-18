@@ -1,0 +1,9 @@
+- name: check
+  hosts: localhost
+  tasks:
+  - name: test deployment
+    command: curl -IL 127.0.0.1:8080/exit
+    register: result
+    changed_when: False
+    failed_when: "'200' not  in result.stdout"
+

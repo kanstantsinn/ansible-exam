@@ -1,0 +1,10 @@
+---
+# tasks file for nginx_test
+- name: test nginx
+  command: systemctl status nginx
+  register: nginx_status
+  changed_when: False
+
+
+- debug: msg={{nginx_status.stdout}}
+

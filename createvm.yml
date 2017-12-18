@@ -1,0 +1,17 @@
+- name: Provision VM
+  connection: local
+  hosts: localhost
+  tasks:
+  - name: provision VM
+    dvagrant:
+      path: '/var/server/jenkins/slave/workspace/EPBYMINW3093/mntlab-ansible-day-Final'
+      state: 'started'
+    register: testout
+  - name: dump test output
+    debug:
+      msg: '{{ testout }}'
+  - name: create inventory
+    lineinfile:
+      path: ./invtmp
+      line: "exitvm  ansible_connection=ssh ansible_user={{ testout.user }} ansible_port={{ testout.port }} ansible_host={{ testout.ip_address }} ansible_ssh_private_key_file={{ testout.keyfile }}"
+      state: present

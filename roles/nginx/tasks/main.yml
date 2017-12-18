@@ -1,0 +1,30 @@
+# tasks file for nginx
+- name: 'install nginx'
+  yum:
+    name: nginx
+    state: latest
+  become: true
+  become_method: sudo
+
+- name: "daemon reload"
+  systemd:
+    state: started
+    daemon_reload: yes
+    name: nginx
+    enabled: yes
+  become: true
+  become_method: sudo
+
+- name: 'copy tomcat  tomcat.services'
+  copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    backup: yes
+  become: true
+  become_method: sudo
+  notify:
+    - restart nginx
+
+
+
+

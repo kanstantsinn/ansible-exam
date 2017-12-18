@@ -1,0 +1,54 @@
+- name: provision
+  hosts: exitvm
+  vars: 
+    url: "mnt-lab"
+    war: "~/mnt-lab.war"
+    username: "tomcat"
+    password: "tomcat"
+
+  tasks:
+  - name: 'copy tomcat-users.xml'
+    template:
+      src: roles/deploy/templates/tomcat-users.xml
+      dest: /opt/tomcat/8.5.24/conf/tomcat-users.xml
+    become: true
+    become_method: sudo
+    notify:
+      - restart tomcat
+
+  - name: 'copy manager.xml'
+    copy:
+      src: roles/deploy/files/manager.xml
+      dest: /opt/tomcat/8.5.24/conf/Catalina/localhost/manager.xml
+      backup: yes
+    become: true
+    become_method: sudo
+    notify:
+      - restart tomcat
+
+  handlers:
+  - name: restart tomcat
+    systemd:
+      state: restarted
+      daemon_reload: yes
+      name: tomcat
+      enabled: yes
+    become: true
+    become_method: sudo
+
+  - name: 'Extract artifact'
+    unarchive:
+      src: /vagrant/target/mnt-exam.tar.gz
+      dest: ~/
+      remote_src: yes
+      extra_opts: [--strip-components=1]
+
+
+
+
+- name: deploy war
+  hosts: exitvm
+  roles:
+    - { role: deploy}
+  
+  

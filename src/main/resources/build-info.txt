@@ -1,0 +1,6 @@
+Build time: 11:15
+Build Machine Name: EPBYMINW3093
+Build_User: Kanstantsin_Shchura 
+Git URL: git@git.epam.com:siarhei_beliakou/mntlab-exam.git
+Git Commit: final_commit
+Git Branch: exam/kshchuta

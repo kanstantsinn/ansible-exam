@@ -1,0 +1,6 @@
+- name: Installation
+  hosts: exitvm
+  roles:
+    - { role: java, java_version: "1.8.0"}
+    - { role: tomcat, t_v: 8,  tomcat_user: "tomcat_as", tomcat_group: "tomcat_as_group"}
+    - { role: nginx }

@@ -1,0 +1,8 @@
+---
+# tasks file for deploy
+- name: deploy app 
+  depwar: 
+    url: "{{url}}"
+    war: "{{war}}"
+    username: "{{username}}" 
+    password: "{{password}}"

@@ -1,0 +1,10 @@
+---
+# tasks file for tomcat_test
+- name: test tomcat
+  command: systemctl status tomcat
+  register: tomcat_status
+  changed_when: False
+  
+
+- debug: msg={{tomcat_status.stdout}}
+

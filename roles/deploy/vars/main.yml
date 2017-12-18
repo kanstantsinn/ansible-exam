@@ -1,0 +1,6 @@
+---
+# vars file for deploy
+url: "exit"
+war: "target/mnt-exam.war"
+username: "tomcat"
+password: "tomcat"
