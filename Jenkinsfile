@@ -40,7 +40,7 @@ node("${env.SLAVE}") {
         use ansible to provision VM
         Tomcat and nginx should be installed
     */    
-    sh "ansible-playbook provisionvm.yml -i invtmp"
+    sh "ansible-playbook provisionvm.yml "
     sh "echo ansible-playbook provisionvm.yml ..."
   }
 
@@ -53,7 +53,7 @@ node("${env.SLAVE}") {
         - Deploy User
         - Deployment Job
     */
-    sh "ansible-playbook deploy.yml -i invtmp -vvv"
+    sh "ansible-playbook deploy.yml -vvv"
     sh "echo ansible-playbook deploy.yml -e artefact=... ..."
   }
 

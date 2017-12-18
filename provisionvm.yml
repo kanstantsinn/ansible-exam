@@ -1,3 +1,4 @@
+- import_playbook: createvm.yml
 - name: Installation
   hosts: exitvm
   roles:
