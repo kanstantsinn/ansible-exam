@@ -1,6 +1,6 @@
 node("${env.SLAVE}") {
   stage ('GIT checkout') {
-        git([url: 'git@git.epam.com:siarhei_beliakou/mntlab-exam.git', branch: 'kshchura'])
+        git([url: 'https://github.com/kanstantsinn/ansible-exam.git', branch: 'master'])
     }
   stage("Build"){
     /*
